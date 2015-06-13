@@ -104,7 +104,7 @@
                                     <input class="loginbutton" style="background-color: #9ea7b1" style="float:left;"
                                            formaction="registreer.php" value="<< Terug" type="submit"/>
                                     <input class="loginbutton" style="background-color: #9ea7b1"
-                                           formaction="updateaccountinfo.php"
+                                           formaction="updateaccountinfo.php?pas=1"
                                            style="float: right; background-color: #9ea7b1"
                                            value="Volgende >>"
                                            type="submit"/

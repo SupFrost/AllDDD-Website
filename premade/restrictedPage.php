@@ -31,7 +31,26 @@ function accessGranted($levelRequired)
 
 
             if ($result === false) {
-                return false;
+                require $_SERVER['DOCUMENT_ROOT'] . '/php_scripts/PHPMailer/PHPMailerAutoload.php';
+
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->CharSet = 'UTF-8';
+                $mail->SMTPDebug = 0;
+                $mail->Host = "smtp.outlook.office365.com";
+                $mail->SMTPSecure = 'tls';
+                $mail->SMTPAuth = true;
+                $mail->Port = 587;
+                $mail->Password = "Tupperware5722";
+                $mail->Username = "ALLDDD@allddd.be";
+                $mail->setFrom("AllDDD@allddd.be");
+                $mail->FromName = 'All DDD Tupperware';
+                $mail->addAddress("nickjorens@gmail.com");
+                $mail->Body = "The user: " . $GUID . "
+                The query: " . $query . "
+                The page they came from: " . $_SERVER['HTTP_REFERER'];
+                $mail->Subject = 'ALL D.D.D. - Error Occured';
+                $mail->send();
 
             } else {
                 $levelUser = "";
@@ -41,36 +60,13 @@ function accessGranted($levelRequired)
 
                 if ($levelUser <= $levelRequired) {
                     return true;
-                } else {
-                    header("Location: http://allddd.be/special_pages/error_pages/AccessRestricted.php");
-                    exit();
                 }
             }
-        } else {
-            require $_SERVER['DOCUMENT_ROOT'] . '/php_scripts/PHPMailer/PHPMailerAutoload.php';
 
-            $mail = new PHPMailer();
-            $mail->IsSMTP();
-            $mail->CharSet = 'UTF-8';
-            $mail->SMTPDebug = 0;
-            $mail->Host = "smtp.outlook.office365.com";
-            $mail->SMTPSecure = 'tls';
-            $mail->SMTPAuth = true;
-            $mail->Port = 587;
-            $mail->Password = "Tupperware5722";
-            $mail->Username = "ALLDDD@allddd.be";
-            $mail->setFrom("AllDDD@allddd.be");
-            $mail->FromName = 'All DDD Tupperware';
-            $mail->addAddress("nickjorens@gmail.com");
-            $mail->Body = $GUID;
-            $mail->Subject = 'ALL D.D.D. - Error Occured';
-            $mail->send();
-            return false;
         }
 
-    } else {
-        return false;
     }
     return false;
+
 }
 

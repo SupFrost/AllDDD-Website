@@ -50,7 +50,7 @@ session_start();
                 $usersGUID = $row['usersGUID'];
                 $unitsGUID = $row['unitsGUID'];
 
-                echo "<tr><td><a href='#'>$unitCode</a></td><td>$unitsNaam</td><td><a href='#'>$usersNaam</a></td></tr>";
+                echo "<tr><td><a href='#'>$unitCode</a></td><td>$unitsNaam</td><td><a href='/special_pages/admin/pages/detail_pages/user.php?GUID=$usersGUID'>$usersNaam</a></td></tr>";
             }
             ?>
 

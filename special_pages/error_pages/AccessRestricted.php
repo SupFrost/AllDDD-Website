@@ -59,11 +59,6 @@
 </body>
 </html>
 <?php
-if (isset($_SERVER['HTTP_REFERER']))
-    $ref = $_SERVER['HTTP_REFERER'];
-else
-    $ref = 'http://allddd.be/';
-
-header("refresh:5; url=$ref");
+header("refresh:5; url=http://allddd.be");
 exit();
 ?>

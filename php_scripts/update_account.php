@@ -12,9 +12,9 @@ session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/premade/dbconnect.php";
 $CODE = $_POST["consulentecode"];
 
-$email = $_POST['email'];
-$geboortedatum = $_POST['geboortedatum'];
-$postcode = $_POST['postcode'];
+$email = $_REQUEST['email'];
+$geboortedatum = $_REQUEST['geboortedatum'];
+$postcode = $_REQUEST['postcode'];
 
 
 if ($_REQUEST['pas'] == 1) {
@@ -32,7 +32,8 @@ if ($_REQUEST['pas'] == 1) {
 
     $passhash = md5($pass);
 
-    $query = "UPDATE users SET password = '$passhash', registreerd = 1, email =" . db_quote($email) . ", postnummer = " . db_quote($postcode) . ", geboortedatum = " . db_quote($geboortedatum) . ", passreset = '' WHERE consulente_code = '$CODE'";
+    $query = "UPDATE users SET password = '$passhash', registreerd = 1, email = " . db_quote($email) . ", postnummer = " . db_quote($postcode) . ", geboortedatum = " . db_quote($geboortedatum) . ", passreset = '' WHERE consulente_code = '$CODE'";
+   echo $query;
     $result = db_query($query);
 
 } else {
@@ -42,10 +43,10 @@ if ($_REQUEST['pas'] == 1) {
 }
 
 if ($result == 1) {
-    header("refresh:.1;url=http://allddd.be/updateaccountinfo.php?success=true");
+    header("refresh:5;url=http://allddd.be/updateaccountinfo.php?success=true");
     exit();
 } else {
-    header("refresh:.1;url=http://allddd.be/special_pages/error_pages/DatabaseError.php");
+    header("refresh:5;url=http://allddd.be/special_pages/error_pages/DatabaseError.php");
     exit();
 }
 

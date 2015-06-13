@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>All DDD - Dashboard</title>
+    <title>All DDD - Users</title>
     <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
@@ -13,34 +13,41 @@
 <!--header -->
 <div class="lists">
     <header>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/premade/Menu.php"; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/premade/Menu.php";
 
+        ?>
     </header>
 
     <section class="content">
+        <?php
+        accessGranted(2);
+
+        if (isset($_REQUEST['GUID'])) {
+            $userGUID = $_REQUEST['GUID'];
+        } else {
+            if (isset($_SERVER['HTTP_REFERER']))
+                $ref = $_SERVER['HTTP_REFERER'];
+            else
+                $ref = 'http://allddd.be/';
+
+            header("refresh:5; url=$ref");
+            exit();
+        }
 
 
+        $query = "SELECT"
 
-        <h3 style="text-align: center;">Dashboard</h3>
 
-        <div class="admin-settings">
-            <a href="pages/users_overview.php" class="m-btn red">Gebruikers</a>
-            <a href="pages/logins.php" class="m-btn green">Logins</a>
-            <a href="pages/units_overview.php" class="m-btn purple">Units</a>
-            <a href="pages/addNews.php" class="m-btn blue">Nieuws Toevoegen</a>
-        </div>
+        ?>
+
+        <h3 style="text-align: center">Gebruiker -  </h3>
+
+
+        <br>
 
 
     </section>
 </div>
-<script type="text/javascript"> Cufon.now(); </script>
 
 </body>
 </html>
-
-<?php
- if(!accessGranted(2)) {
-     header("Location: htpp://allddd.be/special_pages/error_pages/AccessRestricted.php");
-     exit();
- }
-        ?>
