@@ -23,9 +23,6 @@
 
         <?php
 
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/premade/restrictedPage.php";
-
         accessGranted(2)
         ?>
 

@@ -6,7 +6,6 @@
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../../css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="../../js/jquery-1.6.js"></script>
-    <script type="text/javascript" src="../../js/Vegur_300.font.js"></script>
     <script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="../../js/atooltip.jquery.js"></script>
     <script type="text/javascript" src="../../js/css3-mediaqueries.js"></script>

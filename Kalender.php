@@ -13,7 +13,7 @@
     <script src='./js/fullcalendar.min.js'></script>
     <script src='./js/gcal.js'></script>
     <script src='./js/lang/nl.js'></script>
-    <link type="text/css" href="js/calendar%20theme/jquery-ui.theme.css" rel="stylesheet">
+    <link type="text/css" href="js/jquery-ui.theme.css" rel="stylesheet">
     <script>
 
         $(document).ready(function () {

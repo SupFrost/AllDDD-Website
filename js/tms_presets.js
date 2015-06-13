@@ -136,7 +136,7 @@
         },
         ways: {
             lines: function () {
-                var opt = this
+                var opt = this;
                 for (var ret = [], i = 0; i < opt.maskC.length; i++)
                     ret.push(opt.maskC.eq(i))
                 return ret
@@ -149,29 +149,29 @@
                     w = opt.blocksX,
                     x, y, i, lr = function () {
                         for (i = step; i < w - 1 - step; i++)
-                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[step][i])
-                            else return false
+                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[step][i]);
+                            else return false;
                         rb()
                     },
                     rb = function () {
                         for (i = step; i < h - 1 - step; i++)
-                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[i][w - 1 - step])
-                            else return false
+                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[i][w - 1 - step]);
+                            else return false;
                         rl()
                     },
                     rl = function () {
                         for (i = step; i < w - 1 - step; i++)
-                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[h - 1 - step][w - i - 1])
-                            else return false
+                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[h - 1 - step][w - i - 1]);
+                            else return false;
                         lt()
                     },
                     lt = function () {
                         for (i = step; i < h - 1 - step; i++)
-                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[h - i - 1][step])
-                            else return false
+                            if (ret.length < opt.maskC.length) ret.push(opt.matrix[h - i - 1][step]);
+                            else return false;
                         lr(step++)
-                    }
-                lr()
+                    };
+                lr();
                 return ret
             },
             vSnake: function () {
@@ -179,11 +179,11 @@
                     ret = [],
                     h = opt.blocksY,
                     w = opt.blocksX,
-                    j, i
+                    j, i;
                 for (i = 0; i < w; i++)
                     for (j = 0; j < h; j++)
-                        if (i * .5 == ~~(i / 2)) ret.push(opt.matrix[j][i])
-                        else ret.push(opt.matrix[h - 1 - j][i])
+                        if (i * .5 == ~~(i / 2)) ret.push(opt.matrix[j][i]);
+                        else ret.push(opt.matrix[h - 1 - j][i]);
                 return ret
             },
             gSnake: function () {
@@ -191,11 +191,11 @@
                     ret = [],
                     h = opt.blocksY,
                     w = opt.blocksX,
-                    j, i
+                    j, i;
                 for (i = 0; i < h; i++)
                     for (j = 0; j < w; j++)
-                        if (i * .5 == ~~(i / 2)) ret.push(opt.matrix[i][j])
-                        else ret.push(opt.matrix[i][w - 1 - j])
+                        if (i * .5 == ~~(i / 2)) ret.push(opt.matrix[i][j]);
+                        else ret.push(opt.matrix[i][w - 1 - j]);
                 return ret
             },
             diagonal: function () {
@@ -203,17 +203,17 @@
                     ret = [],
                     h = opt.blocksY,
                     w = opt.blocksX,
-                    i = j = n = 0
+                    i = j = n = 0;
                 for (i = 0; i < w; i++)
                     for (ret[i] = [], j = 0; j <= i; j++)
-                        if (j < h) ret[i].push(opt.matrix[j][i - j])
+                        if (j < h) ret[i].push(opt.matrix[j][i - j]);
                 for (i = 1; i < h; i++)
                     for (j = 0, ret[n = ret.length] = []; j < h - i; j++)
                         ret[n].push(opt.matrix[i + j][w - 1 - j])
                 return ret
             },
             chess: function () {
-                var opt = this
+                var opt = this;
                 for (var i = 0, ret = [
                     [],
                     []
@@ -222,7 +222,7 @@
                 return ret
             },
             randomly: function () {
-                var opt = this
+                var opt = this;
                 for (var ret = [], n = i = 0; i < opt.maskC.length; i++)
                     ret.push(opt.maskC.eq(i))
                 for (i = 0; i < opt.maskC.length; i++)
@@ -233,11 +233,11 @@
 
         anims: {
             fadeThree: function (el, last) {
-                var _ = this
+                var _ = this;
                 $(el).each(function (i) {
                     var th = $(this).show().css({left: -_.width / 4, top: 0, zIndex: 2}),
                         clone = th.clone().appendTo(th.parent()).css({left: _.width / 4, top: _.height / 4, zIndex: 1}),
-                        clone2 = th.clone().appendTo(th.parent()).css({left: 0, top: -_.height / 4, zIndex: 1})
+                        clone2 = th.clone().appendTo(th.parent()).css({left: 0, top: -_.height / 4, zIndex: 1});
                     clone
                         .stop()
                         .animate({
@@ -246,7 +246,7 @@
                         }, {
                             duration: _.duration,
                             easing: _.easing
-                        })
+                        });
                     clone2
                         .stop()
                         .animate({
@@ -255,7 +255,7 @@
                         }, {
                             duration: _.duration,
                             easing: _.easing
-                        })
+                        });
                     th
                         .stop()
                         .animate({
@@ -266,27 +266,27 @@
                             easing: _.easing,
                             step: function (now) {
                                 var pc = now / _.width,
-                                    opa = 1 + pc
-                                clone.css({opacity: opa * opa})
-                                clone2.css({opacity: opa * opa})
+                                    opa = 1 + pc;
+                                clone.css({opacity: opa * opa});
+                                clone2.css({opacity: opa * opa});
                                 th.css({opacity: opa * opa * opa})
                             },
                             complete: function () {
-                                if (last)_.afterShow()
-                                clone.remove()
+                                if (last)_.afterShow();
+                                clone.remove();
                                 clone2.remove()
                             }
                         })
                 })
             },
             zoomer: function (el, last) {
-                var _ = this
+                var _ = this;
                 $(el).each(function () {
                     var th = $(this),
                         img = $(new Image()),
                         from = _.direction > 0 ? _.width * _.k : _.width,
-                        to = _.direction > 0 ? _.width : _.width * _.k
-                    console.log(from + ' ' + to)
+                        to = _.direction > 0 ? _.width : _.width * _.k;
+                    console.log(from + ' ' + to);
                     img
                         .css({
                             position: 'absolute',
@@ -296,7 +296,7 @@
                         .css(_.crds)
                         .appendTo(_.pic)
                         .load(function () {
-                            _.pic.find('img').not(img).remove()
+                            _.pic.find('img').not(img).remove();
                             img
                                 .css({
                                     width: from,
@@ -313,7 +313,7 @@
                                 }, {
                                     duration: _.duration,
                                     easing: _.easing
-                                })
+                                });
                             setTimeout(function () {
                                 if (last)_.afterShow()
                             }, 400)
@@ -322,7 +322,7 @@
                 })
             },
             fade: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     $(this).css({
                         opacity: 0
@@ -338,7 +338,7 @@
                 })
             },
             expand: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     $(this).hide().show(+opt.duration, function () {
                         if (last) opt.afterShow()
@@ -346,10 +346,10 @@
                 })
             },
             slideDown: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this).show(),
-                        h = th.height()
+                        h = th.height();
                     th.css({
                         height: 0
                     }).stop().animate({
@@ -364,10 +364,10 @@
                 })
             },
             slideLeft: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this).show(),
-                        w = th.width()
+                        w = th.width();
                     th.css({
                         width: 0
                     }).stop().animate({
@@ -382,12 +382,12 @@
                 })
             },
             slideUp: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this).show(),
                         h = th.height(),
                         l = th.attr('offsetLeft'),
-                        t = th.attr('offsetTop')
+                        t = th.attr('offsetTop');
                     th.css({
                         height: 0,
                         top: t + h
@@ -397,7 +397,7 @@
                         duration: opt.duration,
                         easing: opt.easing,
                         step: function (now) {
-                            var top = t + h - now
+                            var top = t + h - now;
                             th.css({
                                 top: top,
                                 backgroundPosition: '-' + l + 'px -' + top + 'px'
@@ -410,12 +410,12 @@
                 })
             },
             slideRight: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this).show(),
                         w = th.width(),
                         l = th.attr('offsetLeft'),
-                        t = th.attr('offsetTop')
+                        t = th.attr('offsetTop');
                     th.css({
                         width: 0,
                         left: l + w
@@ -425,7 +425,7 @@
                         duration: opt.duration,
                         easing: opt.easing,
                         step: function (now) {
-                            var left = l + w - now
+                            var left = l + w - now;
                             th.css({
                                 left: left,
                                 backgroundPosition: '-' + left + 'px -' + t + 'px'
@@ -438,11 +438,11 @@
                 })
             },
             slideFromTop: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         t = th.show().css('top'),
-                        h = th.height()
+                        h = th.height();
                     th.css({
                         top: -h
                     }).stop().animate({
@@ -457,11 +457,11 @@
                 })
             },
             slideFromDown: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         t = th.show().css('top'),
-                        h = th.height()
+                        h = th.height();
                     th.css({
                         top: h
                     }).stop().animate({
@@ -476,11 +476,11 @@
                 })
             },
             slideFromLeft: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         l = th.show().css('left'),
-                        w = th.width()
+                        w = th.width();
                     th.css({
                         left: -w
                     }).stop().animate({
@@ -495,11 +495,11 @@
                 })
             },
             slideFromRight: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         l = th.show().css('left'),
-                        w = th.width()
+                        w = th.width();
                     th.css({
                         left: w
                     }).stop().animate({
@@ -516,10 +516,10 @@
             gSlider: function (el, last) {
                 var opt = this,
                     clone = opt.maskC.clone(),
-                    w = clone.width()
+                    w = clone.width();
                 clone.appendTo(opt.maskC.parent()).css({
                     background: opt.pic.css('backgroundImage')
-                }).show()
+                }).show();
                 el.show().css({
                     left: opt.direction > 0 ? -w : w
                 }).stop().animate({
@@ -528,11 +528,11 @@
                     duration: +opt.duration,
                     easing: opt.easing,
                     step: function (now) {
-                        if (opt.direction > 0) clone.css('left', now + w)
+                        if (opt.direction > 0) clone.css('left', now + w);
                         else clone.css('left', now - w)
                     },
                     complete: function () {
-                        clone.remove()
+                        clone.remove();
                         if (last) opt.afterShow()
                     }
                 })
@@ -540,10 +540,10 @@
             vSlider: function (el, last) {
                 var opt = this,
                     clone = opt.maskC.clone(),
-                    h = clone.height()
+                    h = clone.height();
                 clone.appendTo(opt.maskC.parent()).css({
                     background: opt.pic.css('backgroundImage')
-                }).show()
+                }).show();
                 el.show().css({
                     top: opt.direction > 0 ? -h : h
                 }).stop().animate({
@@ -552,22 +552,22 @@
                     duration: +opt.duration,
                     easing: opt.easing,
                     step: function (now) {
-                        if (opt.direction > 0) clone.css('top', now + h)
+                        if (opt.direction > 0) clone.css('top', now + h);
                         else clone.css('top', now - h)
                     },
                     complete: function () {
-                        clone.remove()
+                        clone.remove();
                         if (last) opt.afterShow()
                     }
                 })
             },
             vSlideOdd: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         t = th.show().css('top'),
                         h = th.height(),
-                        odd = opt.odd
+                        odd = opt.odd;
                     th.css({
                         top: odd ? -h : h
                     }).stop().animate({
@@ -578,18 +578,18 @@
                         complete: function () {
                             if (last) opt.afterShow()
                         }
-                    })
+                    });
                     opt.odd = opt.odd ? false : true
 
                 })
             },
             gSlideOdd: function (el, last) {
-                var opt = this
+                var opt = this;
                 $(el).each(function () {
                     var th = $(this),
                         l = th.show().css('left'),
                         w = th.width(),
-                        odd = opt.odd
+                        odd = opt.odd;
                     th.css({
                         left: odd ? -w : w
                     }).stop().animate({
@@ -600,11 +600,11 @@
                         complete: function () {
                             if (last) opt.afterShow()
                         }
-                    })
+                    });
                     opt.odd = opt.odd ? false : true
 
                 })
             }
         }
     })
-})(jQuery)
+})(jQuery);

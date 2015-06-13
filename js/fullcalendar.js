@@ -13,9 +13,6 @@
     }
 })(function ($, moment) {
 
-    ;
-    ;
-
     var defaults = {
 
         titleRangeSeparator: ' \u2014 ', // emphasized dash
@@ -127,9 +124,6 @@
         }
     };
 
-    ;
-    ;
-
     var fc = $.fullCalendar = {version: "2.2.6"};
     var fcViews = fc.views = {};
 
@@ -208,9 +202,6 @@
 
 // FIX: find a different solution for view-option-hashes and have a whitelist
 // for options that can be recursively merged.
-
-    ;
-    ;
 
     var langOptionHash = fc.langs = {}; // initialize and expose
 
@@ -360,9 +351,6 @@
 // Initialize English by forcing computation of moment-derived options.
 // Also, sets it as the default.
     fc.lang('en', englishDefaults);
-
-    ;
-    ;
 
 // exports
     fc.intersectionToSeg = intersectionToSeg;
@@ -845,9 +833,6 @@
         };
     }
 
-    ;
-    ;
-
     var ambigDateOfMonthRegex = /^\s*\d{4}-\d\d$/;
     var ambigTimeOrZoneRegex =
         /^\s*\d{4}-(?:(\d\d-\d\d)|(W\d\d$)|(W\d\d-\d)|(\d\d\d))((T| )(\d\d(:\d\d(:\d\d(\.\d+)?)?)?)?)?$/;
@@ -1298,9 +1283,6 @@
         moment.updateOffset(mom, false); // keepTime=false
     } : setMomentValues;
 
-    ;
-    ;
-
 // Single Date Formatting
 // -------------------------------------------------------------------------------------------------
 
@@ -1530,9 +1512,6 @@
         return chunks;
     }
 
-    ;
-    ;
-
     fc.Class = Class; // export
 
 // class that all other classes will inherit from
@@ -1573,9 +1552,6 @@
     Class.mixin = function (members) {
         copyOwnProps(members.prototype || members, this.prototype);
     };
-    ;
-    ;
-
     /* A rectangular panel that is absolutely positioned over other content
      ------------------------------------------------------------------------------------------------------------------------
      Options:
@@ -1743,9 +1719,6 @@
 
     });
 
-    ;
-    ;
-
     /* A "coordinate map" converts pixel coordinates into an associated cell, which has an associated date
      ------------------------------------------------------------------------------------------------------------------------
      Common interface:
@@ -1905,9 +1878,6 @@
         }
 
     });
-
-    ;
-    ;
 
     /* Tracks mouse movements over a CoordMap and raises events about which cell the mouse is over.
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -2332,9 +2302,6 @@
         return false;
     }
 
-    ;
-    ;
-
     /* Creates a clone of an element and lets it track the mouse as it moves
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -2520,9 +2487,6 @@
 
     });
 
-    ;
-    ;
-
     /* A utility class for rendering <tr> rows.
      ----------------------------------------------------------------------------------------------------------------------*/
 // It leverages methods of the subclass and the View to determine custom rendering behavior for each row "type"
@@ -2624,9 +2588,6 @@
         }
 
     });
-
-    ;
-    ;
 
     /* An abstract class comprised of a "grid" of cells that each represent a specific datetime
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -3205,9 +3166,6 @@
         }
 
     });
-
-    ;
-    ;
 
     /* Event-rendering and event-interaction methods for the abstract Grid class
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -4119,9 +4077,6 @@
     }
 
 
-    ;
-    ;
-
     /* A component that renders a grid of whole-days that runs horizontally. There can be multiple rows, one per week.
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -4589,9 +4544,6 @@
 
     });
 
-    ;
-    ;
-
     /* Event-rendering methods for the DayGrid class
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -4894,9 +4846,6 @@
     function compareDaySegCols(a, b) {
         return a.leftCol - b.leftCol;
     }
-
-    ;
-    ;
 
     /* Methods relate to limiting the number events for a given day on a DayGrid
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -5250,9 +5199,6 @@
         }
 
     });
-
-    ;
-    ;
 
     /* A component that renders one or more columns of vertical time slots
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -5762,9 +5708,6 @@
 
     });
 
-    ;
-    ;
-
     /* Event-rendering methods for the TimeGrid class
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -6170,9 +6113,6 @@
                 // do normal sorting...
             compareSegs(seg1, seg2);
     }
-
-    ;
-    ;
 
     /* An abstract class from which other views inherit from
      ----------------------------------------------------------------------------------------------------------------------*/
@@ -6923,10 +6863,6 @@
         }
 
     });
-
-    ;
-    ;
-
 
     function Calendar(element, instanceOptions) {
         var t = this;
@@ -7707,9 +7643,6 @@
 
     }
 
-    ;
-    ;
-
     /* Top toolbar area with buttons and title
      ----------------------------------------------------------------------------------------------------------------------*/
 // TODO: rename all header-related things to "toolbar"
@@ -7935,9 +7868,6 @@
         }
 
     }
-
-    ;
-    ;
 
     fc.sourceNormalizers = [];
     fc.sourceFetchers = [];
@@ -9023,9 +8953,6 @@
         event._end = event.end ? event.end.clone() : null;
     }
 
-    ;
-    ;
-
     /* An abstract class for the "basic" views, as well as month view. Renders one or more rows of day cells.
      ----------------------------------------------------------------------------------------------------------------------*/
 // It is a manager for a DayGrid subcomponent, which does most of the heavy lifting.
@@ -9337,9 +9264,6 @@
 
     });
 
-    ;
-    ;
-
     /* A month view with day cells running in rows (one-per-week) and columns
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -9391,9 +9315,6 @@
 
     MonthView.duration = {months: 1};
 
-    ;
-    ;
-
     /* A week view with simple day cells running horizontally
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -9401,9 +9322,6 @@
         type: 'basic',
         duration: {weeks: 1}
     };
-    ;
-    ;
-
     /* A view with a single simple day cell
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -9411,9 +9329,6 @@
         type: 'basic',
         duration: {days: 1}
     };
-    ;
-    ;
-
     /* An abstract class for all agenda-related views. Displays one more columns with time slots running vertically.
      ----------------------------------------------------------------------------------------------------------------------*/
 // Is a manager for the TimeGrid subcomponent and possibly the DayGrid subcomponent (if allDaySlot is on).
@@ -9816,9 +9731,6 @@
 
     });
 
-    ;
-    ;
-
     /* A week view with an all-day cell area at the top, and a time grid below
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -9826,9 +9738,6 @@
         type: 'agenda',
         duration: {weeks: 1}
     };
-    ;
-    ;
-
     /* A day view with an all-day cell area at the top, and a time grid below
      ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -9836,7 +9745,4 @@
         type: 'agenda',
         duration: {days: 1}
     };
-    ;
-    ;
-
 });
