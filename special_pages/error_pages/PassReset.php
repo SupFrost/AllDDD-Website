@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" media="all">
+    <script type="text/javascript" src="../../js/jquery-1.6.js"></script>
+    <script type="text/javascript" src="../../js/tms-0.3%20-old.js"></script>
+    <script type="text/javascript" src="../../js/tms_presets.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../../js/atooltip.jquery.js"></script>
+    <script type="text/javascript" src="../../js/css3-mediaqueries.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+</head>
+<body id="page1" style="min-height:100%; position:relative;">
+<!--header -->
+<div class="lists">
+    <header class="box_header">
+        <div class="search">
+
+
+        </div>
+
+        <a href="/index.php"><img id="logo" src="/img/Logo.png"/></a>
+        <img class="menu-icon" src="/img/mobile_menu_button.png">
+        <script>
+            (function () {
+                var $body = document.body, $menu_trigger = $body.getElementsByClassName('menu-icon')[0];
+                if (typeof $menu_trigger !== 'undefined') {
+                    $menu_trigger.addEventListener('click', function () {
+                        $body.className = $body.className == 'menu-active' ? '' : 'menu-active';
+                    });
+                }
+            }.call(this));
+        </script>
+
+        <nav>
+            <ul id="slide-menu" class="slide-menu">
+
+            </ul>
+
+            <ul id="menu">
+
+            </ul>
+
+
+        </nav>
+
+    </header>
+
+    <section class="content">
+
+        <h1>Uw paswoord is gereset!</h1>
+
+        <h3 style="margin: 0 auto; text-align: center;">Gelieve u mail na te kijken.</h3>
+
+        <h3 style="margin: 0 auto; text-align: center;">Indien u dit niet zelf gedaan heeft, gelieve Nick Jorens te
+            contacteren.</h3>
+
+
+    </section>
+</div>
+</body>
+</html>
+<?php
+if (isset($_SERVER['HTTP_REFERER']))
+    $ref = $_SERVER['HTTP_REFERER'];
+else
+    $ref = 'http://allddd.be/';
+
+header("refresh:5; url=$ref");
+exit();
+?>

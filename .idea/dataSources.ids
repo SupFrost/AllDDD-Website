@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - allddd@allddd.be" uuid="389c8ffc-ade7-40f7-a593-5d1a8888e4ab">
+    <database-info product="MySQL" version="5.5.43-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="allddd"/>
+    <table name="documenten" schema="" catalog="allddd" type="TABLE">
+      <column name="document_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="path" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="original_document_title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="opmerking" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="user" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="timestamp" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="processed" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="document_id"/>
+      <foreign-key name="documenten_ibfk_1" columns="user" ref-table="users" ref-schema="" ref-catalog="allddd" ref-columns="GUID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="gemeenten" schema="" catalog="allddd" type="TABLE">
+      <column name="Postcode" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Gemeente" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Land" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="Postcode"/>
+      <exported-key name="users_ibfk_2" table="users" schema="" catalog="allddd" columns="postnummer"/>
+    </table>
+    <table name="ideebus" schema="" catalog="allddd" type="TABLE">
+      <column name="idee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soort" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="omschrijving" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="bekeken" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="idee_id"/>
+      <foreign-key name="ideebus_ibfk_1" columns="user" ref-table="users" ref-schema="" ref-catalog="allddd" ref-columns="GUID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="logins" schema="" catalog="allddd" type="TABLE">
+      <column name="login_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ip" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="timestamp" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="user_agent" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="login_id"/>
+      <foreign-key name="logins_ibfk_1" columns="user" ref-table="users" ref-schema="" ref-catalog="allddd" ref-columns="GUID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="news" schema="" catalog="allddd" type="TABLE">
+      <column name="id" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" autoIncrement="true"/>
+      <column name="headline" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="story" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="timestamp" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="page_views" schema="" catalog="allddd" type="TABLE">
+      <column name="view_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="J2ViMDc4OTY2LTU4OGMtNDdlNi1iZTE2LTQ2ZTkxNjg4YjlmYic="/>
+      <column name="page" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="timestamp" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="IP" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="view_id"/>
+      <foreign-key name="page_views_ibfk_1" columns="user" ref-table="users" ref-schema="" ref-catalog="allddd" ref-columns="GUID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="units" schema="" catalog="allddd" type="TABLE">
+      <column name="GUID" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="naam" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="GUID"/>
+      <exported-key name="users_ibfk_3" table="users" schema="" catalog="allddd" columns="unit"/>
+      <index name="code" unique="true" columns="code,naam"/>
+      <index name="code_2" unique="false" columns="code"/>
+      <index name="naam" unique="false" columns="naam"/>
+    </table>
+    <table name="user_function" schema="" catalog="allddd" type="TABLE">
+      <column name="FunctionID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Function" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Abbreviation" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="FunctionID"/>
+      <exported-key name="users_ibfk_1" table="users" schema="" catalog="allddd" columns="user_function"/>
+      <index name="Abbreviation" unique="true" columns="Abbreviation"/>
+      <index name="Function_2" unique="true" columns="Function"/>
+      <index name="FunctionID" unique="true" columns="FunctionID"/>
+      <index name="Abbreviation_2" unique="false" columns="Abbreviation"/>
+      <index name="Function" unique="false" columns="Function"/>
+      <index name="Function_3" unique="false" columns="Function"/>
+      <index name="FunctionID_2" unique="false" columns="FunctionID"/>
+    </table>
+    <table name="users" schema="" catalog="allddd" type="TABLE">
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="GUID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="registreerd" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="consulente_code" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12"/>
+      <column name="unit" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="254" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_function" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="postnummer" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="geboortedatum" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="actief" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="naam" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="voornaam" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="lastlogin" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="passreset" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="GUID"/>
+      <foreign-key name="users_ibfk_3" columns="unit" ref-table="units" ref-schema="" ref-catalog="allddd" ref-columns="GUID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="users_ibfk_1" columns="user_function" ref-table="user_function" ref-schema="" ref-catalog="allddd" ref-columns="FunctionID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="users_ibfk_2" columns="postnummer" ref-table="gemeenten" ref-schema="" ref-catalog="allddd" ref-columns="Postcode" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="documenten_ibfk_1" table="documenten" schema="" catalog="allddd" columns="user"/>
+      <exported-key name="ideebus_ibfk_1" table="ideebus" schema="" catalog="allddd" columns="user"/>
+      <exported-key name="logins_ibfk_1" table="logins" schema="" catalog="allddd" columns="user"/>
+      <exported-key name="page_views_ibfk_1" table="page_views" schema="" catalog="allddd" columns="user"/>
+      <index name="email" unique="true" columns="email"/>
+      <index name="consulente_code" unique="false" columns="consulente_code"/>
+      <index name="consulente_code_2" unique="false" columns="consulente_code"/>
+      <index name="consulente_code_3" unique="false" columns="consulente_code"/>
+      <index name="passreset" unique="false" columns="passreset"/>
+      <index name="user_function_2" unique="false" columns="user_function"/>
+      <index name="user_function_3" unique="false" columns="user_function"/>
+    </table>
+  </data-source>
+</component>
