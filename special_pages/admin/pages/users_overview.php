@@ -59,7 +59,7 @@ session_start();
             </tr>
 
             <?php
-            $query = "SELECT consulente_code,voornaam,naam,email,actief FROM users ORDER BY naam ASC";
+            $query = "SELECT GUID, consulente_code,voornaam,naam,email,actief FROM users ORDER BY naam ASC";
 
             if (isset($_SESSION['codes'])) {
 
@@ -71,7 +71,7 @@ session_start();
                 }
 
                 $where = substr($where, 0, strlen($where) - 1);
-                $query = "SELECT consulente_code,voornaam,naam,email,actief FROM users WHERE consulente_code IN ($where) ORDER BY naam ASC";
+                $query = "SELECT GUID, consulente_code,voornaam,naam,email,actief FROM users WHERE consulente_code IN ($where) ORDER BY naam ASC";
             }
 
 
@@ -82,8 +82,16 @@ session_start();
                 $naam = $row['voornaam'] . " " . $row['naam'];
                 $email = $row['email'];
                 $actief = $row['actief'];
+                $GUID = $row['GUID'];
 
-                echo "<tr><td>$consulentecode</td><td>$naam</td><td>$email</td><td><div class='admin-settings' style='margin-left: 0;margin-right: 0;'>";
+                echo "<tr><td>$consulentecode</td><td>$naam</td><td>";
+
+                if ($email != null) {
+                    echo " <a href='mailto:$email?body=Hey%20$naam,'>$email</a></td>";
+                } else {
+                    echo "</td>";
+                }
+                echo "<td><div class='admin-settings' style='margin-left: 0;margin-right: 0;'>";
 
                 if ($actief == '0') {
                     echo "<a href='../php_scripts/changeUser.php?code=$consulentecode&action=actief' class='m-btn green'>Zet Actief!</a></div></td>";
@@ -92,7 +100,7 @@ session_start();
                 }
 
                 echo "<td><div class='admin-settings' style='margin-left: 0;margin-right: 0;'>
-                        <a href='../php_scripts/changeUser.php?code=$consulentecode&action=change' class='m-btn purple'>Pas aan!</a></div></td>";
+                        <a href='/special_pages/admin/pages/detail_pages/user.php?GUID=$GUID'' class='m-btn green'>Profiel</a></div></td>";
 
                 if ($email != null) {
                     echo "<td><div class='admin-settings' style='margin-left: 0;margin-right: 0;'>

@@ -18,8 +18,12 @@
     </header>
 
     <section class="content">
-
-
+        <?php
+        if (accessGranted(2) === false) {
+            header("Location: htpp://allddd.be/special_pages/error_pages/AccessRestricted.php");
+            exit();
+        }
+        ?>
 
         <h3 style="text-align: center;">Dashboard</h3>
 
@@ -33,14 +37,5 @@
 
     </section>
 </div>
-<script type="text/javascript"> Cufon.now(); </script>
-
 </body>
 </html>
-
-<?php
- if(!accessGranted(2)) {
-     header("Location: htpp://allddd.be/special_pages/error_pages/AccessRestricted.php");
-     exit();
- }
-        ?>

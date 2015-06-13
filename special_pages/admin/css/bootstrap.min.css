@@ -937,8 +937,6 @@ label {
 
 select,
 textarea,
-input[type="text"],
-input[type="password"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="date"],
@@ -952,22 +950,12 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    display: inline-block;
-    height: 20px;
-    padding: 4px 6px;
-    margin-bottom: 9px;
     font-size: 14px;
     line-height: 20px;
     color: #555555;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-}
-
-input,
-textarea,
-.uneditable-input {
-    width: 206px;
 }
 
 textarea {
@@ -1038,9 +1026,7 @@ input[type="checkbox"] {
 
 input[type="file"],
 input[type="image"],
-input[type="submit"],
 input[type="reset"],
-input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
     width: auto;
@@ -1192,11 +1178,6 @@ textarea[class*="span"],
     display: inline-block;
 }
 
-input,
-textarea,
-.uneditable-input {
-    margin-left: 0;
-}
 
 .controls-row [class*="span"] + [class*="span"] {
     margin-left: 20px;
